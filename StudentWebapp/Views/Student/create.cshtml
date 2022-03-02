@@ -69,9 +69,9 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>
+                   @* <th>
                         id
-                    </th>
+                    </th>*@
                     <th>
                         First Name
                     </th>
@@ -97,28 +97,27 @@
                     <th>Total Fees</th>
                 </tr>
             </thead>
-            @foreach (var item in ViewBag.show)
-            {
+           
                 <tbody>
-                <td>@item.id </td>
-                <td>@item.Firstname</td>
-                <td>@item.LastName</td>
-                <td>@item.Email</td>
-                <td>@item.Mobile</td>
-                <td>@item.gender</td>
-                <td>@item.City</td>
-                <td>@item.Address</td>
-                <td>@item.Course </td>
-                <td>@item.Fees</td>
+              @*  <td>@TempData["id"] </td>*@
+                <td>@TempData["name"]</td>
+                <td>@TempData["lname"]</td>
+                <td>@TempData["Email"]</td>
+                <td>@TempData["Mobile"]</td>
+                <td>@TempData["Gender"]</td>
+                <td>@TempData["City"]</td>
+                <td>@TempData["Address"]</td>
+                <td>@TempData["Course"] </td>
+                <td>@TempData["Fees"] </td>
                 @{
-                    var tax = @item.Fees * 12.50 / 100;
-                    var total = @item.Fees + tax;
+                    var tax = Convert.ToInt32(TempData["Fees"])*12.5/100;
+                    var total = Convert.ToInt32(TempData["Fees"]) + tax;
                 }
                 <td>@tax</td>
 
                 <td>@total</td>
                 </tbody>
-            }
+           
         </table>
     </div>
 </div>

@@ -29,21 +29,33 @@ namespace StudentWebapp.Controllers
             var list = new List<string>() { "BCA", "MCA", "BCOM", "MCOM", "BBA", "MBA" };
             ViewBag.list = list;
             if (ModelState.IsValid)
-            { 
+            {
+               /* TempData["id"] = std.id;*/
+              
+                TempData["name"] = std.Firstname;
+                TempData["lname"] = std.LastName;
+                TempData["Email"] = std.Email;
+                TempData["Mobile"] = std.Mobile;
+                TempData["Gender"] = std.gender;
+                TempData["City"] = std.City;
+                TempData["Address"] = std.Address;
+                TempData["Course"] = std.Course;
+                TempData["Fees"] = std.Fees;
+                TempData.Keep();
                 _db.tblstudent.Add(std);
                 _db.SaveChanges();
                 ModelState.Clear();
-                return RedirectToAction("Index");
+                return View();
             }
             return View();
         }
-        public IActionResult Index()
+      /*  public IActionResult Index()
         {
-            var db = _db.tblstudent.ToList();
-            ViewBag.show = db;
+        *//*    var db = _db.tblstudent.ToList();*//*
+            ViewBag.show = TempData["id"];
             var list = new List<string>() { "BCA", "MCA", "BCOM", "MCOM", "BBA", "MBA" };
             ViewBag.list = list;
             return View("create");
-        }
+        }*/
     }
 }
