@@ -19,8 +19,7 @@ namespace StudentWebapp.Controllers
         {
             var list = new List<string>() { "BCA","MCA","BCOM","MCOM","BBA","MBA" };
             ViewBag.list = list;
-            var db = _db.tblstudent.ToList();
-            ViewBag.show = db;
+           
             return View();
         }
         [HttpPost]
@@ -42,8 +41,8 @@ namespace StudentWebapp.Controllers
                 TempData["Course"] = std.Course;
                 TempData["Fees"] = std.Fees;
                 TempData.Keep();
-                _db.tblstudent.Add(std);
-                _db.SaveChanges();
+                /*_db.tblstudent.Add(std);
+                _db.SaveChanges();*/
                 ModelState.Clear();
                 return View();
             }
